@@ -21,7 +21,6 @@
       integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
       crossorigin="anonymous" referrerpolicy="no-referrer">
 
-
    <!-- Custom styles -->
    <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -439,6 +438,8 @@
             <!-- Footer form -->
 
          </div>
+
+         <!-- Footer-form -->
          <form class="subscribe-form" name="subscribe_form" autocomplete="on" method="get">
             <p class="footer-form-title footer-text-title">
                Subscribe
@@ -470,7 +471,7 @@
       <div class="modal">
          <button class="modal-close-btn" type="button" data-modal-close>
             <svg class="modal-close-icon" width="8" height="8">
-               <use href="./images/icons.svg#close-icon"></use>
+               <use href="./images/icons.svg#modal-close"></use>
             </svg>
          </button>
 
@@ -483,9 +484,6 @@
             <div class="modal-input-wrapper">
                <input class="modal-input" type="text" name="modal_name" id="modal_name" required minlength="3"
                   title="Please entet your name">
-
-               <!-- <img class="modal-icon" src="./images/icons/modal-name.svg" alt=""> -->
-
                <svg class="modal-icon modal-name" width="18" height="24">
                   <use href="./images/icons.svg#modal-name"></use>
                </svg>
@@ -493,9 +491,12 @@
 
             <label class="modal-label" for="modal_phone">Phone</label>
             <div class="modal-input-wrapper">
-               <input class="modal-input" type="tel" name="modal_phone" id="modal_phone"
+               <input class="modal-input" type="tel" name="modal_phone" id="modal_phone" title="Please enter your phone"
+                  required>
+               <!-- <input class="modal-input" type="tel" name="modal_phone" id="modal_phone"
                   title="Please enter your phone +38 (067) 555-55-55" required
-                  pattern="[\+]\d{2}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}">
+                  pattern="[\+]\d{2}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}"> -->
+
                <svg class=" modal-icon" width="18" height="24">
                   <use href="./images/icons.svg#modal-phone"></use>
                </svg>
@@ -516,7 +517,13 @@
                placeholder="Text input"></textarea>
 
             <label class="modal-agreement">
-               <input class="modal-agreement-input" type="checkbox" name="modal_agreement">
+               <div class="modal-agreement-wrapper">
+                  <input class="modal-agreement-input" type="checkbox" name="modal_agreement">
+                  <svg class="check-icon" width="10" height="8">
+                     <use href="./images/icons.svg#modal-check"></use>
+                  </svg>
+               </div>
+
                <span class="modal-agreement-text">I accept the terms and conditions of the <a
                      class="modal-agreement-link" href="" target="_blank" rel="noopener noreferrer nofollow">Privacy
                      Policy</a></span>
@@ -531,12 +538,12 @@
    <!-- SCRIPT -->
 
    <!-- Inputmask script -->
-   <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
 
    <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/jquery.inputmask.min.js"></script>
 
 
-   <script src="./js/inputmask.js"></script> -->
+   <script src="./js/inputmask.js"></script>
 
    <!-- Modal script -->
 

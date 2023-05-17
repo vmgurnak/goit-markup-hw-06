@@ -31,7 +31,7 @@ html {
 
   /* Transition*/
   --anim: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --anim-modal: 500ms ease-in;
+  --anim-modal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --anim-overlay: 300ms ease-in;
 }
 
@@ -97,9 +97,6 @@ body {
   padding: 0 15px;
   margin-left: auto;
   margin-right: auto;
-
-  /* outline: 2px solid red;
-  outline-offset: -2px; */
 }
 
 .section {
@@ -207,9 +204,6 @@ body {
   align-items: center;
 }
 
-.header-nav-item {
-}
-
 .header-nav-item:not(:last-child) {
   margin-right: 40px;
 }
@@ -230,7 +224,6 @@ body {
 }
 
 .header-nav-link.active {
-  position: relative;
   color: var(--ocean);
 }
 
@@ -252,8 +245,8 @@ body {
   background-color: var(--ocean);
 }
 
-.header-nav-link:focus:after,
-.header-nav-link:hover:after {
+.header-nav-link:focus::after,
+.header-nav-link:hover::after {
   background-color: var(--ocean);
 }
 
@@ -284,25 +277,9 @@ body {
 /* ----------------HERO--------------- */
 
 .hero-title {
-  animation: ;
 }
 
 .hero-btn {
-}
-
-@keyframes anim-hero {
-  0% {
-    opacity: 0;
-    transform: translateY(-70%);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(0%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0%);
-  }
 }
 
 .hero {
@@ -357,6 +334,7 @@ body {
 
 .advantages-title-hidden {
 }
+
 .advantages-list {
   display: flex;
   gap: 24px;
@@ -557,9 +535,7 @@ body {
   border: 1px solid var(--late-slate);
   border-radius: 4px;
 
-  /* transition: color var(--anim), border-color var(--anim); */
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--anim), border-color var(--anim);
 }
 
 .customer-item-link:hover,
@@ -572,11 +548,6 @@ body {
   fill: currentColor;
 }
 
-/* .customer-icon:hover,
-.customer-icon:focus {
-  fill: var(--ocean);
-} */
-
 /* ----------------FOOTER--------------- */
 
 .footer {
@@ -587,7 +558,6 @@ body {
 
 .footer-container {
   display: flex;
-  align-items: baseline;
 }
 
 /* ----------Footer-title---------- */
@@ -712,6 +682,13 @@ body {
 
   padding: 8px 64px 8px 24px;
   border-radius: 4px;
+
+  transition: background-color var(--anim);
+}
+
+.subscribe-form-button:hover,
+.subscribe-form-button:focus {
+  background-color: var(--ocean);
 }
 
 .subscribe-form-icon {
@@ -792,8 +769,7 @@ body {
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--anim-modal), border var(--anim-modal);
 }
 
 .modal-close-btn:hover,
@@ -806,7 +782,7 @@ body {
 .modal-close-icon {
   fill: currentColor;
 
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill var(--anim-modal);
 }
 
 /* --------- Modal form --------- */
@@ -853,11 +829,8 @@ body {
 }
 
 .modal-input:focus {
-  border: none;
-  outline: 1px solid var(--iris);
-  outline-offset: -1px;
-
-  /* border: 1px solid var(--iris); */
+  outline: none;
+  border-color: var(--iris);
 }
 
 .modal-icon {
@@ -869,13 +842,6 @@ body {
   pointer-events: none;
   fill: var(--navy-blue);
 }
-
-/* .modal-icon.modal-name {
-  fill: var(--navy-blue);
-  fill-opacity: 0.5;
-  stroke: var(--navy-blue);
-  stroke-opacity: 1;
-} */
 
 .modal-input:focus + .modal-icon {
   fill: var(--iris);
@@ -897,10 +863,13 @@ body {
 
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
+
+  transition: var(--anim-modal);
 }
 
 .modal-comment:focus {
-  outline: 1px solid var(--iris);
+  outline: none;
+  border-color: var(--iris);
 }
 
 .modal-comment::placeholder {
@@ -916,9 +885,48 @@ body {
   align-items: center;
   margin-bottom: 24px;
 }
-.modal-agreement-input {
+
+.modal-agreement-wrapper {
+  position: relative;
   margin-right: 8px;
 }
+
+.modal-agreement-input {
+  display: flex;
+  align-items: center;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 2px;
+
+  background-color: var(--cloud);
+  /* background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.44558 0.255056C8.61838 0.089653 8.84834 -0.00178848 9.08693 2.65108e-05C9.32551 0.0018415 9.55407 0.0967713 9.72436 0.264784C9.89466 0.432797 9.99337 0.660752 9.99968 0.900549C10.006 1.14034 9.91939 1.37323 9.75816 1.55005L4.86357 7.70436C4.7794 7.79551 4.67782 7.86865 4.5649 7.91942C4.45198 7.97018 4.33003 7.99754 4.20636 7.99984C4.08268 8.00214 3.95981 7.97935 3.8451 7.93282C3.73038 7.88629 3.62618 7.81698 3.53872 7.72903L0.292827 4.46564C0.202435 4.38096 0.129933 4.27884 0.0796475 4.16537C0.0293621 4.05191 0.00232279 3.92942 0.000143182 3.80522C-0.00203643 3.68102 0.0206883 3.55765 0.0669613 3.44248C0.113234 3.3273 0.182108 3.22267 0.269473 3.13483C0.356838 3.047 0.460905 2.97775 0.575465 2.93123C0.690026 2.88471 0.812734 2.86186 0.936267 2.86405C1.0598 2.86624 1.18163 2.89343 1.29449 2.94398C1.40734 2.99454 1.50892 3.06743 1.59315 3.15831L4.16189 5.73967L8.42227 0.28219C8.42994 0.272694 8.43813 0.263635 8.4468 0.255056H8.44558Z' fill='%23F4F4FD'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center; */
+
+  transition: var(--anim-modal);
+}
+
+.check-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  fill: var(--cloud);
+}
+
+.modal-agreement-input:checked {
+  background-color: var(--ocean);
+  border-color: var(--ocean);
+}
+
+.modal-agreement-input:focus {
+  outline: none;
+  border: 1px solid var(--iris);
+}
+
 .modal-agreement-text {
   font-size: 12px;
   line-height: 1.17;
@@ -967,13 +975,8 @@ body {
 
   padding: 12px 24px;
 
-  /* transition: color var(--anim), background-color var(--anim),
-    box-shadow var(--anim); */
-
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--anim), background-color var(--anim),
+    border-color var(--anim), box-shadow var(--anim);
 }
 
 .portfolio-btn:hover,
@@ -1010,6 +1013,8 @@ body {
 .portfolio-img {
 }
 
+/* ------------Overlay------------ */
+
 .portfolio-thumb {
   position: relative;
   overflow: hidden;
@@ -1028,8 +1033,7 @@ body {
   opacity: 0.8;
 
   transform: translateY(100%);
-  /* transition: transform var(--anim-overlay); */
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--anim-overlay);
 
   font-weight: 400;
   font-size: 16px;
